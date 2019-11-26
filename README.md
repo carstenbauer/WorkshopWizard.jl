@@ -6,5 +6,17 @@
 
 [codecov-img]: https://img.shields.io/codecov/c/github/crstnbr/WorkshopWizard.jl/master.svg?label=codecov
 
+Install the wizard
 
-Read the [documentation](https://crstnbr.github.io/WorkshopWizard.jl/dev).
+```julia
+] add https://github.com/crstnbr/WorkshopWizard.jl
+```
+
+and start the magic
+
+```julia
+using WorkshopWizard
+WorkshopWizard.run()
+```
+
+For disbelievers there is a [documentation](https://crstnbr.github.io/WorkshopWizard.jl/dev).
