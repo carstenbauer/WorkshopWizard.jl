@@ -51,7 +51,9 @@ end
 @testset "WorkshopTools.jl" begin
 
     @testset "Defaults" begin
-        @test WorkshopTools.default_workshop() == "JuliaOulu2020"
+
+        _, latest = findmax(map(w -> parse(Int, w[end-1:end]), WorkshopTools.WORKSHOPS))
+        @test WorkshopTools.default_workshop() == WorkshopTools.WORKSHOPS[latest]
         @test WorkshopTools.default_repo() == "https://github.com/crstnbr/JuliaOulu2020"
         if Sys.iswindows()
             @test WorkshopTools.default_path() == joinpath(homedir(), "Desktop")
