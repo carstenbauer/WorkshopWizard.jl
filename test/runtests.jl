@@ -48,6 +48,13 @@ function test_load_pkg(pkg::Symbol)
     end
 end
 
+function rm_global_IJulia()
+    prev_env = Base.ACTIVE_PROJECT[]
+    pkg"activate"
+    pkg"rm IJulia"
+    Pkg.activate(prev_env)
+end
+
 @testset "WorkshopTools.jl" begin
 
     @testset "Defaults" begin
@@ -74,11 +81,7 @@ end
                 @test WorkshopTools._check_IJulia() == true
             end
 
-            # remove global IJulia
-            prev_env = Base.ACTIVE_PROJECT[]
-            pkg"activate"
-            pkg"rm IJulia"
-            Pkg.activate(prev_env)
+            rm_global_IJulia()
 
             @test WorkshopTools._check_IJulia() == false
             WorkshopTools.install_IJulia(globally = false)
@@ -116,6 +119,7 @@ end
                 @test test_load_pkg(:BenchmarkTools)
                 @test test_load_pkg(:GenericLinearAlgebra)
             end
+            rm_global_IJulia()
         end
     end
 
