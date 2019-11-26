@@ -3,7 +3,7 @@ module WorkshopTools
 using Pkg
 
 const GITHUB_BASEURL = "https://github.com/crstnbr/"
-const WORKSHOPS = ["JuliaOulu2020", "JuliaWorkshop19", "JuliaWorkshop18"]
+const WORKSHOPS = ["JuliaOulu20", "JuliaWorkshop19", "JuliaWorkshop18"]
 
 default_workshop() = WORKSHOPS[1]
 default_repo() = joinpath(GITHUB_BASEURL, default_workshop())
