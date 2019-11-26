@@ -19,7 +19,7 @@ function download(; repo = default_repo(), path = default_path())
 end
 
 """
-    install(; repo = default_repo(), path = default_path())
+    install(; repo = default_repo(), path = default_path(), check_IJulia = true)
 
 Download the Julia workshop and install all dependencies.
 
@@ -27,10 +27,15 @@ By default, the workshop will be downloaded to the desktop (on windows)
 or the home directory (on linux/macOS). Alternatively, the installation path
 can be specified per keyword argument `path=desired/install/path`.
 """
-function install(; repo = default_repo(), path = default_path())
+function install(; repo = default_repo(), path = default_path(), check_IJulia = true)
     download(repo = repo, path = path)
     install_dependencies(joinpath(path, basename(repo)))
     @info "Workshop installation completed."
+
+    if check_IJulia && (_check_IJulia == false)
+        @info "Couldn't find IJulia."
+        install_IJulia()
+    end
     return nothing
 end
 
