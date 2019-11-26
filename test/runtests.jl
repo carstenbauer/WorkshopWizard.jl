@@ -73,25 +73,26 @@ end
     @testset "Download" begin
         cd(mktempdir()) do
             WorkshopTools.download(
-                repo = "https://github.com/crstnbr/JuliaWorkshop18",
+                repo = "https://github.com/crstnbr/JuliaTestWorkshop",
                 path = pwd(),
             )
-            @test isdir("JuliaWorkshop18")
-            @test isfile("JuliaWorkshop18/README.md")
+            @test isdir("JuliaTestWorkshop")
+            @test isfile("JuliaTestWorkshop/README.md")
         end
     end
 
     @testset "Install" begin
         cd(mktempdir()) do
             WorkshopTools.install(
-                repo = "https://github.com/crstnbr/JuliaOulu2020",
+                repo = "https://github.com/crstnbr/JuliaTestWorkshop",
                 path = pwd(),
             )
-            @test isdir("JuliaOulu2020")
-            @test isfile("JuliaOulu2020/README.md")
-            with_pkg_env("JuliaOulu2020") do
-                @test test_load_pkg(:Interact)
+            @test isdir("JuliaTestWorkshop")
+            @test isfile("JuliaTestWorkshop/README.md")
+            with_pkg_env("JuliaTestWorkshop") do
+                @test test_load_pkg(:Colors)
                 @test test_load_pkg(:BenchmarkTools)
+                @test test_load_pkg(:GenericLinearAlgebra)
             end
         end
     end
