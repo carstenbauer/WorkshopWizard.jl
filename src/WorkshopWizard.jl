@@ -1,4 +1,4 @@
-module WorkshopTools
+module WorkshopWizard
 
 using Pkg
 

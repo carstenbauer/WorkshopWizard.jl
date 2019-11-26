@@ -1,4 +1,4 @@
-using WorkshopTools
+using WorkshopWizard
 using Test, Pkg
 
 function with_temp_env(f, env_name::AbstractString="Dummy"; rm=true)
@@ -55,39 +55,39 @@ function rm_global_IJulia()
     Pkg.activate(prev_env)
 end
 
-@testset "WorkshopTools.jl" begin
+@testset "WorkshopWizard.jl" begin
 
     @testset "Defaults" begin
 
-        _, latest = findmax(map(w -> parse(Int, w[end-1:end]), WorkshopTools.WORKSHOPS))
-        latest_workshop = WorkshopTools.WORKSHOPS[latest]
-        @test WorkshopTools.default_workshop() == latest_workshop
-        @test WorkshopTools.default_repo() == "https://github.com/crstnbr/$(latest_workshop)"
+        _, latest = findmax(map(w -> parse(Int, w[end-1:end]), WorkshopWizard.WORKSHOPS))
+        latest_workshop = WorkshopWizard.WORKSHOPS[latest]
+        @test WorkshopWizard.default_workshop() == latest_workshop
+        @test WorkshopWizard.default_repo() == "https://github.com/crstnbr/$(latest_workshop)"
         if Sys.iswindows()
-            @test WorkshopTools.default_path() == joinpath(homedir(), "Desktop")
+            @test WorkshopWizard.default_path() == joinpath(homedir(), "Desktop")
         elseif Sys.islinux()
-            @test WorkshopTools.default_path() == homedir()
+            @test WorkshopWizard.default_path() == homedir()
         else
-            @test WorkshopTools.default_path() == homedir()
+            @test WorkshopWizard.default_path() == homedir()
         end
     end
 
     @testset "IJulia" begin
         with_temp_env() do
-            @test WorkshopTools._check_IJulia() == false
-            WorkshopTools.install_IJulia() # globally = true
-            @test WorkshopTools._check_IJulia() == true
+            @test WorkshopWizard._check_IJulia() == false
+            WorkshopWizard.install_IJulia() # globally = true
+            @test WorkshopWizard._check_IJulia() == true
             with_temp_env() do
-                @test WorkshopTools._check_IJulia() == true
+                @test WorkshopWizard._check_IJulia() == true
             end
 
             rm_global_IJulia()
 
-            @test WorkshopTools._check_IJulia() == false
-            WorkshopTools.install_IJulia(globally = false)
-            @test WorkshopTools._check_IJulia() == true
+            @test WorkshopWizard._check_IJulia() == false
+            WorkshopWizard.install_IJulia(globally = false)
+            @test WorkshopWizard._check_IJulia() == true
             with_temp_env() do
-                @test WorkshopTools._check_IJulia() == false
+                @test WorkshopWizard._check_IJulia() == false
             end
             Pkg.rm("IJulia")
         end
@@ -95,7 +95,7 @@ end
 
     @testset "Download" begin
         cd(mktempdir()) do
-            WorkshopTools.download(
+            WorkshopWizard.download(
                 repo = "https://github.com/crstnbr/JuliaTestWorkshop",
                 path = pwd(),
             )
@@ -106,7 +106,7 @@ end
 
     @testset "Install" begin
         cd(mktempdir()) do
-            WorkshopTools.install(
+            WorkshopWizard.install(
                 repo = "https://github.com/crstnbr/JuliaTestWorkshop",
                 path = pwd(),
             )
