@@ -29,6 +29,11 @@ Although the installer should locate your local python installation automaticall
 (if present), the keyword `python` can be used to manually point to a python executable.
 """
 function install_IJulia(; python = nothing)
+    if _check_IJulia()
+        @info "IJulia already seems to be installed."
+        return nothing
+    end
+
     if !isnothing(python)
         !isfile(python) &&
         isdir(python) &&
