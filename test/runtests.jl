@@ -68,8 +68,25 @@ end
     @testset "IJulia" begin
         with_temp_env() do
             @test WorkshopTools._check_IJulia() == false
-            WorkshopTools.install_IJulia()
+            WorkshopTools.install_IJulia() # globally = true
             @test WorkshopTools._check_IJulia() == true
+            with_temp_env() do
+                @test WorkshopTools._check_IJulia() == true
+            end
+
+            # remove global IJulia
+            prev_env = Base.ACTIVE_PROJECT[]
+            pkg"activate"
+            pkg"rm IJulia"
+            Pkg.activate(prev_env)
+
+            @test WorkshopTools._check_IJulia() == false
+            WorkshopTools.install_IJulia(globally = false)
+            @test WorkshopTools._check_IJulia() == true
+            with_temp_env() do
+                @test WorkshopTools._check_IJulia() == false
+            end
+            Pkg.rm("IJulia")
         end
     end
 
