@@ -92,6 +92,7 @@ end
             )
             @test isdir("JuliaTestWorkshop")
             @test isfile("JuliaTestWorkshop/README.md")
+            @test test_load_pkg(:IJulia)
             with_pkg_env("JuliaTestWorkshop") do
                 @test test_load_pkg(:IJulia)
                 @test test_load_pkg(:Colors)

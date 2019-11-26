@@ -32,7 +32,7 @@ function install(; repo = default_repo(), path = default_path(), check_IJulia = 
     install_dependencies(joinpath(path, basename(repo)))
     @info "Workshop installation completed."
 
-    if check_IJulia && (_check_IJulia == false)
+    if check_IJulia && (_check_IJulia() == false)
         @info "Couldn't find IJulia."
         install_IJulia()
     end

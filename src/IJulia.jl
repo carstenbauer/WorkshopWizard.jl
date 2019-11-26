@@ -43,8 +43,11 @@ function install_IJulia(; python = nothing)
         ENV["PYTHON"] = python
     end
 
-    @info "Installing IJulia"
+    @info "Installing IJulia to global environment"
+    prev_active = Base.ACTIVE_PROJECT[]
+    pkg"activate"
     pkg"add IJulia"
+    Pkg.activate(prev_active)
     return nothing
 end
 
