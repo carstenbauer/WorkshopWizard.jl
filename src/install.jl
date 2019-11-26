@@ -1,5 +1,13 @@
 using LibGit2
 
+"""
+    download(; repo = default_repo(), path = default_path())
+
+Download a workshop from github.
+
+Keyword arguments `repo` and `path` can be used to specify the github repository
+and the local installation directory.
+"""
 function download(; repo = default_repo(), path = default_path())
     if !occursin("github.com", repo)
         repo = joinpath(GITHUB_BASEURL, repo)
@@ -11,6 +19,8 @@ function download(; repo = default_repo(), path = default_path())
 end
 
 """
+    install(; repo = default_repo(), path = default_path())
+
 Download the Julia workshop and install all dependencies.
 
 By default, the workshop will be downloaded to the desktop (on windows)
@@ -24,6 +34,12 @@ function install(; repo = default_repo(), path = default_path())
     return nothing
 end
 
+
+"""
+    install_dependencies(workshop_path)
+
+Install and precompile all dependencies of the Julia workshop in `workshop_path`.
+"""
 function install_dependencies(workshop_path)
     @info "Installing and precompiling all dependencies (this may take a while)"
     cd(workshop_path) do
@@ -37,8 +53,15 @@ function install_dependencies(workshop_path)
     pkg"activate ."
 end
 
+"""
+    install_wizard()
 
-function install_interactive()
+Starts the workshop installation wizard. It will interactively guide you through
+the selection, download, and installation of a Julia workshop.
+
+If not already present, the wizard will also install IJulia.
+"""
+function install_wizard()
     IJulia_found = _check_IJulia(verbose = false)
 
     @info "Welcome to the workshop installation wizard."

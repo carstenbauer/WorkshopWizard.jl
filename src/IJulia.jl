@@ -19,6 +19,15 @@ function _check_IJulia()
     end
 end
 
+
+"""
+    install_IJulia(; python = nothing)
+
+Install the IJulia kernel for jupyter.
+
+Although the installer should locate your local python installation automatically
+(if present), the keyword `python` can be used to manually point to a python executable.
+"""
 function install_IJulia(; python = nothing)
     if !isnothing(python)
         !isfile(python) &&
@@ -34,6 +43,11 @@ function install_IJulia(; python = nothing)
     return nothing
 end
 
+"""
+    notebookserver()
+
+Start the Jupyter notebook server to dive into the workshop materials!
+"""
 function notebookserver()
     @info "Loading IJulia"
     @eval using IJulia
