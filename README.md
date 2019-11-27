@@ -20,3 +20,13 @@ WorkshopWizard.run_wizard()
 ```
 
 For disbelievers there is a [documentation](https://crstnbr.github.io/WorkshopWizard.jl/dev).
+
+## Demonstration
+
+### Standard
+
+![wizard demo](https://github.com/crstnbr/WorkshopWizard.jl/blob/master/demo/wizard.gif)
+
+### Custom
+
+![wizard demo](https://github.com/crstnbr/WorkshopWizard.jl/blob/master/demo/wizard_detailed.gif)
