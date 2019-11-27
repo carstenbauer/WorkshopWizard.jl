@@ -6,7 +6,7 @@
 
 [codecov-img]: https://img.shields.io/codecov/c/github/crstnbr/WorkshopWizard.jl/master.svg?label=codecov
 
-A magical little helper who will download and install one of my Julia workshops for you.
+A magical little helper who will download and install [one](http://github.com/crstnbr/JuliaWorkshop18) [of](http://github.com/crstnbr/JuliaWorkshop19) [my](http://github.com/crstnbr/JuliaOulu20) Julia workshops for you.
 
 To quickly get the latest workshop, install the wizard
 
