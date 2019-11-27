@@ -2,9 +2,9 @@
 
 **WorkshopWizard.jl** is awesome.
 
-## Contents
+## Index
 
-```@contents
+```@index
 ```
 
 ## Functions
@@ -22,9 +22,4 @@ install()
 default_path()
 default_repo()
 default_workshop()
-```
-
-## Index
-
-```@index
 ```

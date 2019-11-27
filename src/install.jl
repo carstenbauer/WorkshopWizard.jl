@@ -8,7 +8,12 @@ Download a workshop from github.
 Keyword arguments `repo` and `path` can be used to specify the github repository
 and the local installation directory.
 """
-function download(; repo = default_repo(), path = default_path())
+function download(
+    ;
+    repo = default_repo(),
+    path = default_path(),
+    auto_overwrite = false,
+)
     if !occursin("github.com", repo)
         repo = joinpath(GITHUB_BASEURL, repo)
     end
@@ -17,8 +22,13 @@ function download(; repo = default_repo(), path = default_path())
 
     # overwrite?
     if isdir(target)
-        @info "Target directory $(target) already exists. Should I overwrite?"
-        answer = yes_no_dialog()
+        if auto_overwrite
+            answer = true
+        else
+            @info "Target directory $(target) already exists. Should I overwrite?"
+            answer = yes_no_dialog()
+        end
+
         if answer == true
             rm(target, force = true, recursive = true)
         else
@@ -33,21 +43,26 @@ function download(; repo = default_repo(), path = default_path())
 end
 
 """
-    install(; repo = default_repo(), path = default_path(), check_IJulia = true)
+    install(; repo = default_repo(), path = default_path(), check_IJulia = true, auto_overwrite = true)
 
-Download the Julia workshop and install all dependencies.
+More programmatic workshop installation interface.
 
 By default, the workshop will be downloaded to the desktop (on windows)
-or the home directory (on linux/macOS). Alternatively, the installation path
-can be specified per keyword argument `path=desired/install/path`.
+or the home directory (on linux/macOS). The installation path
+can be adjusted per keyword argument `path = desired/install/path`.
 """
 function install(
     ;
     repo = default_repo(),
     path = default_path(),
     check_IJulia = true,
+    auto_overwrite = true,
 )
-    success = download(repo = repo, path = path)
+    success = download(
+        repo = repo,
+        path = path,
+        auto_overwrite = auto_overwrite,
+    )
     !success && (return false)
     _install_dependencies(joinpath(path, basename(repo)))
     @info "Workshop installation completed."
@@ -91,6 +106,7 @@ function run_wizard()
             repo = default_repo(),
             path = default_path(),
             check_IJulia = true,
+            auto_overwrite = false,
         )
     else
         success = _install_interactive()
@@ -134,7 +150,11 @@ function _install_interactive()
     end
 
     @info "Starting the installation"
-    success = install(repo = joinpath(GITHUB_BASEURL, workshop), path = path)
+    success = install(
+        repo = joinpath(GITHUB_BASEURL, workshop),
+        path = path,
+        auto_overwrite = false,
+    )
     !success && (return false)
 
     IJulia_found = _check_IJulia()
