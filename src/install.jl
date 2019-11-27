@@ -65,7 +65,8 @@ function install(
     )
     !success && (return false)
     _install_dependencies(joinpath(path, basename(repo)))
-    @info "Workshop installation completed."
+    workshop_dir = joinpath(path, basename(repo))
+    @info "Workshop successfully installed to $(workshop_dir)."
 
     if check_IJulia && (_check_IJulia() == false)
         @info "Couldn't find IJulia."
