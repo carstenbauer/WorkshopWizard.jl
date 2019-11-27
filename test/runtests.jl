@@ -1,7 +1,7 @@
 using WorkshopWizard
 using Test, Pkg
 
-function with_temp_env(f, env_name::AbstractString="Dummy"; rm=true)
+function with_temp_env(f, env_name::AbstractString = "Dummy"; rm = true)
     prev_active = Base.ACTIVE_PROJECT[]
     env_path = joinpath(mktempdir(), env_name)
     Pkg.generate(env_path)
@@ -18,14 +18,21 @@ function with_temp_env(f, env_name::AbstractString="Dummy"; rm=true)
             rm && Base.rm(env_path; force = true, recursive = true)
         catch err
             # Avoid raising an exception here as it will mask the original exception
-            println(Base.stderr, "Exception in finally: $(sprint(showerror, err))")
+            println(
+                Base.stderr,
+                "Exception in finally: $(sprint(showerror, err))",
+            )
         end
         push!(LOAD_PATH, "@v#.#")
         push!(LOAD_PATH, "@stdlib")
     end
 end
 
-function with_pkg_env(fn::Function, path::AbstractString="."; change_dir=false)
+function with_pkg_env(
+    fn::Function,
+    path::AbstractString = ".";
+    change_dir = false,
+)
     prev_active = Base.ACTIVE_PROJECT[]
     Pkg.activate(path)
     try
@@ -59,12 +66,18 @@ end
 
     @testset "Defaults" begin
 
-        _, latest = findmax(map(w -> parse(Int, w[end-1:end]), WorkshopWizard.WORKSHOPS))
+        _, latest = findmax(map(
+            w -> parse(Int, w[end-1:end]),
+            WorkshopWizard.WORKSHOPS,
+        ))
         latest_workshop = WorkshopWizard.WORKSHOPS[latest]
         @test WorkshopWizard.default_workshop() == latest_workshop
         @test WorkshopWizard.default_repo() == "https://github.com/crstnbr/$(latest_workshop)"
         if Sys.iswindows()
-            @test WorkshopWizard.default_path() == joinpath(homedir(), "Desktop")
+            @test WorkshopWizard.default_path() == joinpath(
+                homedir(),
+                "Desktop",
+            )
         elseif Sys.islinux()
             @test WorkshopWizard.default_path() == homedir()
         else

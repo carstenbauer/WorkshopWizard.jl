@@ -20,7 +20,7 @@ function download(; repo = default_repo(), path = default_path())
         @info "Target directory $(target) already exists. Should I overwrite?"
         answer = yes_no_dialog()
         if answer == true
-            rm(target, force=true, recursive=true)
+            rm(target, force = true, recursive = true)
         else
             @info "Aborting."
             return false
@@ -41,7 +41,12 @@ By default, the workshop will be downloaded to the desktop (on windows)
 or the home directory (on linux/macOS). Alternatively, the installation path
 can be specified per keyword argument `path=desired/install/path`.
 """
-function install(; repo = default_repo(), path = default_path(), check_IJulia = true)
+function install(
+    ;
+    repo = default_repo(),
+    path = default_path(),
+    check_IJulia = true,
+)
     success = download(repo = repo, path = path)
     !success && (return false)
     _install_dependencies(joinpath(path, basename(repo)))
