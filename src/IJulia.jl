@@ -61,15 +61,3 @@ function install_IJulia(; python = nothing, globally = true)
     end
     return nothing
 end
-
-"""
-    notebookserver()
-
-Start the Jupyter notebook server to dive into the workshop materials!
-"""
-function notebookserver()
-    @info "Loading IJulia"
-    @eval using IJulia
-    @info "Starting Jupyter notebook server"
-    @eval notebook()
-end
