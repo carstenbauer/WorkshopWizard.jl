@@ -28,24 +28,6 @@ function with_temp_env(f, env_name::AbstractString = "Dummy"; rm = true)
     end
 end
 
-function with_pkg_env(
-    fn::Function,
-    path::AbstractString = ".";
-    change_dir = false,
-)
-    prev_active = Base.ACTIVE_PROJECT[]
-    Pkg.activate(path)
-    try
-        if change_dir
-            cd(fn, path)
-        else
-            fn()
-        end
-    finally
-        Base.ACTIVE_PROJECT[] = prev_active
-    end
-end
-
 function test_load_pkg(pkg::Symbol)
     try
         @eval import $pkg
@@ -56,10 +38,9 @@ function test_load_pkg(pkg::Symbol)
 end
 
 function rm_global_IJulia()
-    prev_env = Base.ACTIVE_PROJECT[]
-    pkg"activate"
-    pkg"rm IJulia"
-    Pkg.activate(prev_env)
+    WorkshopWizard.with_pkg_env("", globalenv = true) do
+        pkg"rm IJulia"
+    end
 end
 
 @testset "WorkshopWizard.jl" begin
@@ -126,7 +107,7 @@ end
             @test isdir("JuliaTestWorkshop")
             @test isfile("JuliaTestWorkshop/README.md")
             @test test_load_pkg(:IJulia)
-            with_pkg_env("JuliaTestWorkshop") do
+            WorkshopWizard.with_pkg_env("JuliaTestWorkshop") do
                 @test test_load_pkg(:IJulia)
                 @test test_load_pkg(:Colors)
                 @test test_load_pkg(:BenchmarkTools)
