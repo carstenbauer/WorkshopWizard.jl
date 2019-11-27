@@ -24,3 +24,22 @@ function yes_no_dialog()
         return nothing
     end
 end
+
+
+function with_pkg_env(
+    fn::Function,
+    path::AbstractString = ".";
+    change_dir = false,
+)
+    prev_active = Base.ACTIVE_PROJECT[]
+    Pkg.activate(path)
+    try
+        if change_dir
+            cd(fn, path)
+        else
+            fn()
+        end
+    finally
+        Base.ACTIVE_PROJECT[] = prev_active
+    end
+end

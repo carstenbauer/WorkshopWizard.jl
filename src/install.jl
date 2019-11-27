@@ -77,15 +77,12 @@ end
 
 function _install_dependencies(workshop_path)
     @info "Installing and precompiling all dependencies (this may take a while)"
-    cd(workshop_path) do
-        println()
-        pkg"activate ."
+    with_pkg_env(workshop_path, change_dir = true) do
         pkg"instantiate"
         pkg"precompile"
         println("Done.")
         println()
     end
-    pkg"activate ."
 end
 
 """
