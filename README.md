@@ -16,7 +16,7 @@ and start the magic
 
 ```julia
 using WorkshopWizard
-WorkshopWizard.run()
+WorkshopWizard.run_wizard()
 ```
 
 For disbelievers there is a [documentation](https://crstnbr.github.io/WorkshopWizard.jl/dev).

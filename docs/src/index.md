@@ -14,11 +14,11 @@ CurrentModule = WorkshopWizard
 ```
 
 ```@docs
-run()
-install()
-download()
-install_IJulia()
+run_wizard()
 check_IJulia()
+install_IJulia()
+download()
+install()
 default_path()
 default_repo()
 default_workshop()

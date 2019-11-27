@@ -68,14 +68,14 @@ function _install_dependencies(workshop_path)
 end
 
 """
-    run()
+    run_wizard()
 
 Start the workshop installation wizard. It will interactively guide you through
 the selection, download, and installation of a Julia workshop.
 
 If not already present, the wizard will also install IJulia.
 """
-function Base.run()
+function run_wizard()
     @info "Welcome to the workshop installation wizard."
 
     # default settings?
