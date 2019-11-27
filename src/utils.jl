@@ -30,12 +30,19 @@ function with_pkg_env(
     fn::Function,
     path::AbstractString = ".";
     change_dir = false,
+    globalenv = false,
 )
     prev_active = Base.ACTIVE_PROJECT[]
-    Pkg.activate(path)
+    if globalenv
+        Pkg.activate()
+    else
+        Pkg.activate(path)
+    end
     try
         if change_dir
-            cd(fn, path)
+            cd(path) do
+                fn()
+            end
         else
             fn()
         end

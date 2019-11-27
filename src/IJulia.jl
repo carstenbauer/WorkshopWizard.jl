@@ -48,10 +48,13 @@ function install_IJulia(; python = nothing, globally = true)
 
     if globally
         @info "Installing IJulia to global environment"
-        prev_active = Base.ACTIVE_PROJECT[]
-        pkg"activate"
-        pkg"add IJulia"
-        Pkg.activate(prev_active)
+        # prev_active = Base.ACTIVE_PROJECT[]
+        # pkg"activate"
+        # pkg"add IJulia"
+        # Pkg.activate(prev_active)
+        with_pkg_env("", globalenv = true) do
+            pkg"add IJulia"
+        end
     else
         @info "Installing IJulia"
         pkg"add IJulia"
