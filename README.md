@@ -8,7 +8,7 @@
 
 A magical little helper who will download and install one of my Julia workshops for you.
 
-To quickly get the latests workshop, install the wizard
+To quickly get the latest workshop, install the wizard
 
 ```julia
 ] add https://github.com/crstnbr/WorkshopWizard.jl
