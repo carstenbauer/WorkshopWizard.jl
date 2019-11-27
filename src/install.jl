@@ -13,9 +13,23 @@ function download(; repo = default_repo(), path = default_path())
         repo = joinpath(GITHUB_BASEURL, repo)
     end
     workshop = basename(repo)
-    @info "Downloading \"$workshop\" to $path"
-    LibGit2.clone(repo, joinpath(path, workshop))
-    return nothing
+    target = joinpath(path, workshop)
+
+    # overwrite?
+    if isdir(target)
+        @info "Target directory $(target) already exists. Should I overwrite?"
+        answer = yes_no_dialog()
+        if answer == true
+            rm(target, force=true, recursive=true)
+        else
+            @info "Aborting."
+            return false
+        end
+    end
+
+    @info "Downloading \"$workshop\" to $target"
+    LibGit2.clone(repo, target)
+    return true
 end
 
 """
@@ -28,24 +42,19 @@ or the home directory (on linux/macOS). Alternatively, the installation path
 can be specified per keyword argument `path=desired/install/path`.
 """
 function install(; repo = default_repo(), path = default_path(), check_IJulia = true)
-    download(repo = repo, path = path)
-    install_dependencies(joinpath(path, basename(repo)))
+    success = download(repo = repo, path = path)
+    !success && (return false)
+    _install_dependencies(joinpath(path, basename(repo)))
     @info "Workshop installation completed."
 
     if check_IJulia && (_check_IJulia() == false)
         @info "Couldn't find IJulia."
         install_IJulia()
     end
-    return nothing
+    return true
 end
 
-
-"""
-    install_dependencies(workshop_path)
-
-Install and precompile all dependencies of the Julia workshop in `workshop_path`.
-"""
-function install_dependencies(workshop_path)
+function _install_dependencies(workshop_path)
     @info "Installing and precompiling all dependencies (this may take a while)"
     cd(workshop_path) do
         println()
@@ -59,24 +68,46 @@ function install_dependencies(workshop_path)
 end
 
 """
-    install_wizard()
+    run()
 
-Starts the workshop installation wizard. It will interactively guide you through
+Start the workshop installation wizard. It will interactively guide you through
 the selection, download, and installation of a Julia workshop.
 
 If not already present, the wizard will also install IJulia.
 """
-function install_wizard()
-    IJulia_found = _check_IJulia(verbose = false)
-
+function Base.run()
     @info "Welcome to the workshop installation wizard."
 
+    # default settings?
+    @info "Should I download and install the $(default_workshop()) workshop with default settings?"
+    answer = yes_no_dialog()
+    if answer == true
+        success = install(
+            repo = default_repo(),
+            path = default_path(),
+            check_IJulia = true,
+        )
+    else
+        success = _install_interactive()
+    end
+
+    !success && (return nothing)
+    println()
+    @info "That's it. Start the notebook server with \"using IJulia; notebook()\" and take it away."
+    @info "Have fun with the workshop material!"
+    println()
+    println("- The Workshop Wizard")
+    return nothing
+end
+
+
+function _install_interactive()
     # workshop selection
     @info "Please select a workshop:"
     workshop = workshop_selector()
     if isnothing(workshop)
         @info "No workshop selected. Aborting."
-        return nothing
+        return false
     end
     @info "Selected \"$workshop\" for installation."
 
@@ -98,19 +129,21 @@ function install_wizard()
     end
 
     @info "Starting the installation"
-    install(repo = joinpath(GITHUB_BASEURL, workshop), path = path)
+    success = install(repo = joinpath(GITHUB_BASEURL, workshop), path = path)
+    !success && (return false)
 
+    IJulia_found = _check_IJulia()
     if !IJulia_found
         println()
         @info "You don't seem to have IJulia installed, which is necessary for the workshop."
         @info "Should I install it for you?"
         answer = yes_no_dialog()
         if answer == true
-            install_IJulia()
+            success = install_IJulia()
+            !success && (return false)
         end
+    else
+        @info "Skipping IJulia (already installed)."
     end
-
-    println()
-    @info "That's it. Have fun with the workshop materials! - Carsten"
-    return nothing
+    return true
 end
