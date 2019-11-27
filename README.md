@@ -6,7 +6,9 @@
 
 [codecov-img]: https://img.shields.io/codecov/c/github/crstnbr/WorkshopWizard.jl/master.svg?label=codecov
 
-Install the wizard
+A magical little helper who will download and install one of my Julia workshops for you.
+
+To quickly get the latest workshop, install the wizard
 
 ```julia
 ] add https://github.com/crstnbr/WorkshopWizard.jl
@@ -19,4 +21,16 @@ using WorkshopWizard
 WorkshopWizard.run_wizard()
 ```
 
+That's it!
+
 For disbelievers there is a [documentation](https://crstnbr.github.io/WorkshopWizard.jl/dev).
+
+## Demonstration
+
+### Standard
+
+![wizard demo](https://github.com/crstnbr/WorkshopWizard.jl/blob/master/demo/wizard.gif)
+
+### Custom
+
+![wizard demo](https://github.com/crstnbr/WorkshopWizard.jl/blob/master/demo/wizard_detailed.gif)
