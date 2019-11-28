@@ -110,9 +110,7 @@ function run_wizard()
     end
 
     !success && (return nothing)
-    println()
     @info "That's it. Start the notebook server with \"using IJulia; notebook()\" and take it away."
-    @info "Have fun with the workshop material!"
     println()
     println("- The Workshop Wizard")
     return nothing

@@ -74,7 +74,8 @@ end
             with_temp_env() do
                 @test WorkshopWizard._check_IJulia() == true
             end
-            rm_global_IJulia()
+            WorkshopWizard.uninstall_IJulia()
+            @test WorkshopWizard._check_IJulia() == false
         end
     end
 
@@ -104,7 +105,26 @@ end
                 @test test_load_pkg(:BenchmarkTools)
                 @test test_load_pkg(:GenericLinearAlgebra)
             end
-            rm_global_IJulia()
+            WorkshopWizard.uninstall_IJulia()
+        end
+
+        # without global IJulia
+        cd(mktempdir()) do
+            WorkshopWizard.install(
+                repo = "https://github.com/crstnbr/JuliaTestWorkshop",
+                path = pwd(),
+                global_IJulia = false,
+            )
+            @test isdir("JuliaTestWorkshop")
+            @test isfile("JuliaTestWorkshop/README.md")
+            @test test_load_pkg(:IJulia) == false
+            WorkshopWizard.with_pkg_env("JuliaTestWorkshop") do
+                @test test_load_pkg(:IJulia)
+                @test test_load_pkg(:Colors)
+                @test test_load_pkg(:BenchmarkTools)
+                @test test_load_pkg(:GenericLinearAlgebra)
+            end
+            WorkshopWizard.uninstall_IJulia()
         end
     end
 
