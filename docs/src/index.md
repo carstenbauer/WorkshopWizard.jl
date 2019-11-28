@@ -1,6 +1,6 @@
 # Introduction
 
-The **WorkshopWizard.jl** is a magical little helper who will download and install one of [my](https://github.com/crstnbr) Julia workshops for you.
+The **WorkshopWizard.jl** is a magical little helper who will download and install one of [my](https://github.com/crstnbr) Julia workshops (like [this one](https://github.com/crstnbr/JuliaWorkshop19)) for you.
 
 Specifically, the wizard does the following:
 
