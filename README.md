@@ -17,6 +17,8 @@
 
 A magical little helper who will download and install [one](http://github.com/crstnbr/JuliaWorkshop18) [of](http://github.com/crstnbr/JuliaWorkshop19) [my](http://github.com/crstnbr/JuliaOulu20) Julia workshops for you.
 
+## Usage
+
 To quickly get the latest workshop, install the wizard
 
 ```julia
