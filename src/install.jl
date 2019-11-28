@@ -67,6 +67,7 @@ function install(
     _install_dependencies(joinpath(path, basename(repo)))
     workshop_dir = joinpath(path, basename(repo))
     @info "Workshop successfully installed to $(workshop_dir)."
+    println()
 
     if global_IJulia
         install_IJulia()
