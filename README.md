@@ -21,7 +21,7 @@ The wizard does
 
 * download the workshop materials,
 * instantiate and precompile the workshop environment,
-* install IJulia and the interactive Jupyter notebooks front-end (if necessary).
+* add IJulia to the global environment (opt-out possible).
 
 The default download path is the desktop (on windows) or the home directory (on linux/macOS).
 
@@ -40,7 +40,12 @@ using WorkshopWizard
 WorkshopWizard.run_wizard()
 ```
 
-That's it!
+That's it! You can now start the Jupyter notebook server and dive into the workshop materials:
+
+```julia
+using IJulia
+notebook()
+```
 
 For disbelievers (and troubleshooting) there is a [documentation](https://crstnbr.github.io/WorkshopWizard.jl/dev).
 
