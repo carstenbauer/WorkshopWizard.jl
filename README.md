@@ -17,13 +17,7 @@
 
 A magical little helper who will download and install [one](http://github.com/crstnbr/JuliaWorkshop18) [of](http://github.com/crstnbr/JuliaWorkshop19) [my](http://github.com/crstnbr/JuliaOulu20) Julia workshops for you.
 
-The wizard does
-
-* download the workshop materials,
-* instantiate and precompile the workshop environment,
-* add IJulia to the global environment (opt-out possible).
-
-The default download path is the desktop (on windows) or the home directory (on linux/macOS).
+For disbelievers (and troubleshooting) there is a [documentation](https://crstnbr.github.io/WorkshopWizard.jl/dev).
 
 ## Usage
 
@@ -47,14 +41,8 @@ using IJulia
 notebook()
 ```
 
-For disbelievers (and troubleshooting) there is a [documentation](https://crstnbr.github.io/WorkshopWizard.jl/dev).
+The default download path is the desktop, on windows, or the home directory, on linux/macOS.
 
 ## Demonstration
 
-### Standard
-
 ![wizard demo](https://raw.githubusercontent.com/crstnbr/WorkshopWizard.jl/master/demo/wizard.gif)
-
-### Custom
-
-![wizard demo](https://raw.githubusercontent.com/crstnbr/WorkshopWizard.jl/master/demo/wizard_detailed.gif)
