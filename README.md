@@ -53,8 +53,8 @@ For disbelievers (and troubleshooting) there is a [documentation](https://crstnb
 
 ### Standard
 
-![wizard demo](https://github.com/crstnbr/WorkshopWizard.jl/blob/master/demo/wizard.gif)
+![wizard demo](https://raw.githubusercontent.com/crstnbr/WorkshopWizard.jl/master/demo/wizard.gif)
 
 ### Custom
 
-![wizard demo](https://github.com/crstnbr/WorkshopWizard.jl/blob/master/demo/wizard_detailed.gif)
+![wizard demo](https://raw.githubusercontent.com/crstnbr/WorkshopWizard.jl/master/demo/wizard_detailed.gif)

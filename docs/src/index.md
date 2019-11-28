@@ -31,10 +31,8 @@ using IJulia
 notebook()
 ```
 
-The default download path is the desktop (on windows) or the home directory (on linux/macOS).
+The default download path is the desktop, on windows, or the home directory, on linux/macOS.
 
 ## Demonstration
 
-Here, I demonstrate how to use the wizard with default settings.
-
-![wizard demo](https://github.com/crstnbr/WorkshopWizard.jl/blob/master/demo/wizard.gif)
+![wizard demo](https://raw.githubusercontent.com/crstnbr/WorkshopWizard.jl/master/demo/wizard.gif)
