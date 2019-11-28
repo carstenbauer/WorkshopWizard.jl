@@ -5,7 +5,7 @@ using Pkg
 const GITHUB_BASEURL = "https://github.com/crstnbr/"
 const WORKSHOPS = ["JuliaOulu20", "JuliaWorkshop19", "JuliaWorkshop18"]
 
-default_workshop() = WORKSHOPS[2]
+default_workshop() = WORKSHOPS[1]
 default_repo() = joinpath(GITHUB_BASEURL, default_workshop())
 default_path() = begin
     if Sys.iswindows()
