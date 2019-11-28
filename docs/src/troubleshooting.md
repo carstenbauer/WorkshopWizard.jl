@@ -28,7 +28,7 @@ Pkg.build("IJulia")
 
 ### IJulia fails to install a mini python
 
-In this case I recommend you install a global python separately and then use the
+In this case I recommend to install a global python separately and then use the
 steps explained above ([IJulia can't find my global python](@ref)).
 
 On linux, you should use your package manager to install python and jupyter.
