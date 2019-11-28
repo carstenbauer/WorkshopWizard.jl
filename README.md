@@ -1,4 +1,4 @@
-# WorkshopWizard
+# WorkshopWizard.jl
 
 
 > Pay no attention to that man behind the curtain. - The Wizard of Oz
