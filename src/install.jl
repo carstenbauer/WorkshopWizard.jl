@@ -55,7 +55,7 @@ function install(
     ;
     repo = default_repo(),
     path = default_path(),
-    check_IJulia = true,
+    global_IJulia = true,
     auto_overwrite = true,
 )
     success = download(
@@ -68,8 +68,7 @@ function install(
     workshop_dir = joinpath(path, basename(repo))
     @info "Workshop successfully installed to $(workshop_dir)."
 
-    if check_IJulia && (_check_IJulia() == false)
-        @info "Couldn't find IJulia."
+    if global_IJulia
         install_IJulia()
     end
     return true
@@ -103,7 +102,7 @@ function run_wizard()
         success = install(
             repo = default_repo(),
             path = default_path(),
-            check_IJulia = true,
+            global_IJulia = true,
             auto_overwrite = false,
         )
     else
@@ -151,22 +150,15 @@ function _install_interactive()
     success = install(
         repo = joinpath(GITHUB_BASEURL, workshop),
         path = path,
+        global_IJulia = false,
         auto_overwrite = false,
     )
     !success && (return false)
 
-    IJulia_found = _check_IJulia()
-    if !IJulia_found
-        println()
-        @info "You don't seem to have IJulia installed, which is necessary for the workshop."
-        @info "Should I install it for you?"
-        answer = yes_no_dialog()
-        if answer == true
-            success = install_IJulia()
-            !success && (return false)
-        end
-    else
-        @info "Skipping IJulia (already installed)."
+    @info "Should I install IJulia globally for you?"
+    answer = yes_no_dialog()
+    if answer == true
+        install_IJulia()
     end
     return true
 end

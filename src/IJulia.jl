@@ -1,5 +1,5 @@
 """
-Check if IJulia is available.
+Check if IJulia is available (anywhere).
 """
 function check_IJulia()
     if _check_IJulia()
@@ -21,22 +21,15 @@ end
 
 
 """
-    install_IJulia(; python = nothing, globally = true)
+    install_IJulia(; python = nothing)
 
-Install the IJulia kernel for jupyter.
-
-Although the installer should locate your local python installation automatically
-(if present), the keyword `python` can be used to manually point to a python executable.
-
-When `globally = true` IJulia will be installed to the global `v#.#` environment,
+Install IJulia to the to the global `v#.#` environment,
 or to the environment that has been given to `--project` when Julia was started.
-"""
-function install_IJulia(; python = nothing, globally = true)
-    if _check_IJulia()
-        @info "IJulia already seems to be installed."
-        return nothing
-    end
 
+IJulia should automatically install python and jupyter if necessary.
+The keyword `python` can be used to manually point to a python executable (to give it a hint).
+"""
+function install_IJulia(; python = nothing)
     if !isnothing(python)
         !isfile(python) &&
         isdir(python) &&
@@ -46,18 +39,31 @@ function install_IJulia(; python = nothing, globally = true)
         ENV["PYTHON"] = python
     end
 
-    if globally
-        @info "Installing IJulia to global environment"
-        # prev_active = Base.ACTIVE_PROJECT[]
-        # pkg"activate"
-        # pkg"add IJulia"
-        # Pkg.activate(prev_active)
-        with_pkg_env("", globalenv = true) do
+    with_pkg_env("", globalenv = true) do
+        if "IJulia" in keys(Pkg.installed())
+            @info "IJulia already seems to be installed."
+        else
+            @info "Installing IJulia to global environment"
             pkg"add IJulia"
         end
-    else
-        @info "Installing IJulia"
-        pkg"add IJulia"
+    end
+    return nothing
+end
+
+
+"""
+    uninstall_IJulia()
+
+Remove IJulia from the global environment.
+"""
+function uninstall_IJulia()
+    with_pkg_env("", globalenv = true) do
+        if "IJulia" in keys(Pkg.installed())
+            @info "Uninstalling IJulia"
+            pkg"rm IJulia"
+        else
+            @info "IJulia couldn't be found in the global environment"
+        end
     end
     return nothing
 end

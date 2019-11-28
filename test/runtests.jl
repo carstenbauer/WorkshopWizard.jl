@@ -69,21 +69,12 @@ end
     @testset "IJulia" begin
         with_temp_env() do
             @test WorkshopWizard._check_IJulia() == false
-            WorkshopWizard.install_IJulia() # globally = true
+            WorkshopWizard.install_IJulia()
             @test WorkshopWizard._check_IJulia() == true
             with_temp_env() do
                 @test WorkshopWizard._check_IJulia() == true
             end
-
             rm_global_IJulia()
-
-            @test WorkshopWizard._check_IJulia() == false
-            WorkshopWizard.install_IJulia(globally = false)
-            @test WorkshopWizard._check_IJulia() == true
-            with_temp_env() do
-                @test WorkshopWizard._check_IJulia() == false
-            end
-            Pkg.rm("IJulia")
         end
     end
 
