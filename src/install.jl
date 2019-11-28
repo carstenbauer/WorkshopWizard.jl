@@ -64,7 +64,7 @@ function install(
         auto_overwrite = auto_overwrite,
     )
     !success && (return false)
-    _install_dependencies(joinpath(path, basename(repo)))
+    install_dependencies(joinpath(path, basename(repo)))
     workshop_dir = joinpath(path, basename(repo))
     @info "Workshop successfully installed to $(workshop_dir)."
     println()
@@ -75,7 +75,13 @@ function install(
     return true
 end
 
-function _install_dependencies(workshop_path)
+"""
+    install_dependencies(workshop_path)
+
+Instantiates and precompiles the workshops Julia environment (Manifest.toml).
+Depending on the workshop and your machine this may take a while (even >15 minutes).
+"""
+function install_dependencies(workshop_path)
     @info "Installing and precompiling all dependencies (this may take a while)"
     with_pkg_env(workshop_path, change_dir = true) do
         pkg"instantiate"
