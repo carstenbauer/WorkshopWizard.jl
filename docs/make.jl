@@ -6,6 +6,7 @@ makedocs(
     sitename = "WorkshopWizard.jl",
     pages = [
         "Introduction" => "index.md",
+        "Troubleshooting" => "troubleshooting.md",
         "Functions" => "functions.md",
     ],
     # assets = ["assets/custom.css", "assets/custom.js"]
