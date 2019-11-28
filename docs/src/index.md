@@ -1,25 +1,40 @@
 # Introduction
 
-**WorkshopWizard.jl** is awesome.
+The **WorkshopWizard.jl** is a magical little helper who will download and install one of [my](https://github.com/crstnbr) Julia workshops for you.
 
-## Index
+Specifically, the wizard does the following:
 
-```@index
+* Download the workshop materials
+* Instantiate and precompile the workshop environment
+* Add IJulia to the global environment (opt-out possible)
+
+
+## Usage
+
+To quickly get the latest workshop, install the wizard
+
+```julia
+] add https://github.com/crstnbr/WorkshopWizard.jl
 ```
 
-## Functions
+and start the magic
 
-```@meta
-CurrentModule = WorkshopWizard
+```julia
+using WorkshopWizard
+WorkshopWizard.run_wizard()
 ```
 
-```@docs
-run_wizard()
-check_IJulia()
-install_IJulia()
-download()
-install()
-default_path()
-default_repo()
-default_workshop()
+That's it! You can now start the Jupyter notebook server and dive into the workshop materials:
+
+```julia
+using IJulia
+notebook()
 ```
+
+The default download path is the desktop (on windows) or the home directory (on linux/macOS).
+
+## Demonstration
+
+Here, I demonstrate how to use the wizard with default settings.
+
+![wizard demo](https://github.com/crstnbr/WorkshopWizard.jl/blob/master/demo/wizard.gif)

@@ -119,7 +119,7 @@ end
             @test isfile("JuliaTestWorkshop/README.md")
             @test test_load_pkg(:IJulia) == false
             WorkshopWizard.with_pkg_env("JuliaTestWorkshop") do
-                @test test_load_pkg(:IJulia)
+                @test test_load_pkg(:IJulia) # assuming that JuliaTestWorkshop depends on IJulia
                 @test test_load_pkg(:Colors)
                 @test test_load_pkg(:BenchmarkTools)
                 @test test_load_pkg(:GenericLinearAlgebra)
