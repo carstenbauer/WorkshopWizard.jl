@@ -46,17 +46,7 @@ using WorkshopWizard
 WorkshopWizard.install();
 ```
 
-```jldoctest
-a = 1
-b = 2
-a + b
-
-# output
-
-3
-```
-
-```jldoctest
+```jldoctest install
 isdir(joinpath(homedir(), WorkshopWizard.default_workshop()))
 
 # output
