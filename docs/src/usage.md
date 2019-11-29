@@ -46,8 +46,12 @@ using WorkshopWizard
 WorkshopWizard.install();
 ```
 
-```jldoctest install
-isdir(joinpath(homedir(), WorkshopWizard.default_workshop()))
+```jldoctest
+using Pkg;
+pkg" add https://github.com/crstnbr/WorkshopWizard.jl/"
+using WorkshopWizard
+WorkshopWizard.install();
+isdir(joinpath(WorkshopWizard.default_path(), WorkshopWizard.default_workshop()))
 
 # output
 
