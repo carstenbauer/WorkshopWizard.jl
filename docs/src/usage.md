@@ -31,16 +31,15 @@ The default download path is the desktop, on windows, or the home directory, on 
 ![wizard demo](https://raw.githubusercontent.com/crstnbr/WorkshopWizard.jl/master/demo/wizard.gif)
 
 
-## REPL mode test
+## Unattended installation
 
-```@repl
-] add https://github.com/crstnbr/WorkshopWizard.jl/
-```
+If you want to install the latest workshop without interactivity you can use
+[`WorkshopWizard.install()`](@ref):
 
 ```@repl
 using Pkg;
 pkg" add https://github.com/crstnbr/WorkshopWizard.jl/"
 
 using WorkshopWizard
-WorkshopWizard.install()
+WorkshopWizard.install();
 ```
