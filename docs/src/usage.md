@@ -36,10 +36,30 @@ The default download path is the desktop, on windows, or the home directory, on 
 If you want to install the latest workshop without interactivity you can use
 [`WorkshopWizard.install()`](@ref):
 
-```@repl
+```@setup
 using Pkg;
 pkg" add https://github.com/crstnbr/WorkshopWizard.jl/"
+```
 
+```@repl
 using WorkshopWizard
 WorkshopWizard.install();
+```
+
+```jldoctest
+a = 1
+b = 2
+a + b
+
+# output
+
+3
+```
+
+```jldoctest
+isdir(joinpath(homedir(), WorkshopWizard.default_workshop()))
+
+# output
+
+true
 ```
