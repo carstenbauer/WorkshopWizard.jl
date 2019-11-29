@@ -1,4 +1,4 @@
-# Introduction
+# Package
 
 The **Workshop Wizard** is a magical little helper who will download and
 install one of [my](https://github.com/crstnbr) Julia workshops
