@@ -43,7 +43,7 @@ function download(
 end
 
 """
-    install(; repo = default_repo(), path = default_path(), check_IJulia = true, auto_overwrite = true)
+    install(; repo = default_repo(), path = default_path(), global_IJulia = true, auto_overwrite = true)
 
 More programmatic workshop installation interface.
 

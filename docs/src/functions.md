@@ -15,6 +15,7 @@ CurrentModule = WorkshopWizard
 run_wizard
 install_IJulia
 uninstall_IJulia
+check_IJulia
 download
 install_dependencies
 install

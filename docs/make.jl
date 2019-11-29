@@ -2,7 +2,7 @@ using Documenter, WorkshopWizard
 
 makedocs(
     modules = [WorkshopWizard],
-    doctest = false,
+    doctest = true,
     sitename = "WorkshopWizard.jl",
     pages = [
         "Introduction" => "index.md",
