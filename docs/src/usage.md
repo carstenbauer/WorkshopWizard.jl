@@ -45,22 +45,3 @@ pkg" add https://github.com/crstnbr/WorkshopWizard.jl/"
 using WorkshopWizard
 WorkshopWizard.install();
 ```
-
-
-```@meta
-DocTestSetup = quote
-    using Pkg;
-    pkg" add https://github.com/crstnbr/WorkshopWizard.jl/"
-    using WorkshopWizard
-    WorkshopWizard.install();
-end
-```
-
-```jldoctest
-julia> isdir(joinpath(WorkshopWizard.default_path(), WorkshopWizard.default_workshop()))
-true
-```
-
-```@meta
-DocTestSetup = nothing
-```
