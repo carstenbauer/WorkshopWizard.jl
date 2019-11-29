@@ -1,5 +1,7 @@
 # Usage
 
+In this section we describe how to use the WorkshopWizard.
+
 ## Getting the latest workshop
 
 To quickly get the latest workshop, install the wizard
@@ -24,6 +26,6 @@ notebook()
 
 The default download path is the desktop, on windows, or the home directory, on linux/macOS.
 
-### Demonstration
+## Demonstration
 
 ![wizard demo](https://raw.githubusercontent.com/crstnbr/WorkshopWizard.jl/master/demo/wizard.gif)
