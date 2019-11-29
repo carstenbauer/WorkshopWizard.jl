@@ -29,3 +29,18 @@ The default download path is the desktop, on windows, or the home directory, on 
 ## Demonstration
 
 ![wizard demo](https://raw.githubusercontent.com/crstnbr/WorkshopWizard.jl/master/demo/wizard.gif)
+
+
+## REPL mode test
+
+```@repl
+] add https://github.com/crstnbr/WorkshopWizard.jl/
+```
+
+```@repl
+using Pkg;
+pkg" add https://github.com/crstnbr/WorkshopWizard.jl/"
+
+using WorkshopWizard
+WorkshopWizard.install()
+```
