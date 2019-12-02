@@ -60,7 +60,7 @@ LibGit2.clone("https://github.com/crstnbr/JuliaOulu20", "some/where/on/my/comput
 ```
 where you replace `some/where/on/my/computer/` with a download path to your liking.
 
-### Installing and precompiling the dependencies
+### [Installing and precompiling the dependencies](@id instantiate_env)
 
 Open up a Julia REPL and navigate to the `JuliaOulu20` directory
 ```
@@ -86,7 +86,7 @@ To do this, start a fresh Julia REPL (or `] activate`) and execute
 ] add IJulia
 ```
 
-If you have [installed and precompiled the workshop dependencies](@ref Installing and precompiling the dependencies)
+If you have [installed and precompiled the workshop dependencies](@ref instantiate_env)
 before this should take almost no time, since IJulia is already installed. It just needs
 to be added to the environment.
 
