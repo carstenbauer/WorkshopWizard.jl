@@ -21,7 +21,7 @@ For disbelievers (and troubleshooting) there is a [documentation](https://crstnb
 
 ## Usage
 
-To quickly get the latest workshop, install the wizard
+To quickly get the latest workshop, install the wizard (copy-paste the following into the Julia REPL)
 
 ```julia
 ] add https://github.com/crstnbr/WorkshopWizard.jl
