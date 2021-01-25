@@ -53,7 +53,7 @@ end
 
 function pkgs_in_env()
     if VERSION < v"1.4"
-        return Pkg.installed()
+        return keys(Pkg.installed())
     else
         return [dep.name for (uuid, dep) in Pkg.dependencies()]
     end
