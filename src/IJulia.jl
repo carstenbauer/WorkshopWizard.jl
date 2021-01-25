@@ -40,7 +40,7 @@ function install_IJulia(; python = nothing)
     end
 
     with_pkg_env("", globalenv = true) do
-        if "IJulia" in keys(Pkg.installed())
+        if "IJulia" in pkgs_in_env()
             @info "IJulia already seems to be installed."
         else
             @info "Installing IJulia to global environment"
@@ -58,7 +58,7 @@ Remove IJulia from the global environment.
 """
 function uninstall_IJulia()
     with_pkg_env("", globalenv = true) do
-        if "IJulia" in keys(Pkg.installed())
+        if "IJulia" in pkgs_in_env()
             @info "Uninstalling IJulia"
             pkg"rm IJulia"
         else

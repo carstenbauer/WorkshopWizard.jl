@@ -50,3 +50,5 @@ function with_pkg_env(
         Base.ACTIVE_PROJECT[] = prev_active
     end
 end
+
+pkgs_in_env() = [dep.name for (uuid, dep) in Pkg.dependencies()]
