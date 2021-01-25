@@ -3,7 +3,12 @@ module WorkshopWizard
 using Pkg
 
 const GITHUB_BASEURL = "https://github.com/crstnbr/"
-const WORKSHOPS = ["JuliaOulu20", "JuliaWorkshop19", "JuliaWorkshop18"]
+const WORKSHOPS = [
+    "JuliaNRW21",
+    "JuliaOulu20",
+    "JuliaWorkshop19",
+    "JuliaWorkshop18"
+    ]
 
 default_workshop() = WORKSHOPS[1]
 default_repo() = joinpath(GITHUB_BASEURL, default_workshop())
