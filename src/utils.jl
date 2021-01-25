@@ -58,3 +58,11 @@ function pkgs_in_env()
         return [dep.name for (uuid, dep) in Pkg.dependencies()]
     end
 end
+
+function julia_version_is_compatible(workshop)
+    workshop in keys(WORKSHOP_JULIA_VERSION) || return true
+    
+    ver = WORKSHOP_JULIA_VERSION[workshop]
+    ver_upper = VersionNumber(ver.major, ver.minor+1)
+    return ver <= VERSION < ver_upper
+end

@@ -134,6 +134,14 @@ function _install_interactive()
     end
     @info "Selected \"$workshop\" for installation."
 
+    if !julia_version_is_compatible(workshop)
+        ver = WORKSHOP_JULIA_VERSION[workshop]
+        @warn "Your Julia version ($(VERSION)) does not match the recommended version " *
+              "for this workshop ($(ver))!\n" *
+              "THE WORKSHOP MAY NOT INSTALL/RUN PROPERLY!\n" * 
+              "To fix this, upgrade/downgrade to Julia version $(ver)."
+    end
+
     # installation directory
     path = default_path()
     @info "The default installation directory is: $path"

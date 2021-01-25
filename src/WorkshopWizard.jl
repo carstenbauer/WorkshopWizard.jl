@@ -10,6 +10,13 @@ const WORKSHOPS = [
     "JuliaWorkshop18"
     ]
 
+const WORKSHOP_JULIA_VERSION = Dict(
+    "JuliaNRW21" => v"1.5",
+    "JuliaOulu20" => v"1.3",
+    "JuliaWorkshop19" => v"1.2",
+    "JuliaWorkshop18" => v"1.0"
+    )
+
 default_workshop() = WORKSHOPS[1]
 default_repo() = joinpath(GITHUB_BASEURL, default_workshop())
 default_path() = begin
