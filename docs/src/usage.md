@@ -4,7 +4,7 @@ In this section we describe how to use the WorkshopWizard.
 
 ## Getting the latest workshop
 
-To quickly get the latest workshop, install the wizard
+To quickly get the latest workshop, install the wizard (copy-paste to Julia REPL)
 
 ```julia
 ] add https://github.com/crstnbr/WorkshopWizard.jl
