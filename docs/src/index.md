@@ -1,7 +1,7 @@
 # Package
 
 The **Workshop Wizard** is a magical little helper who will download and
-install one of [my](https://github.com/crstnbr) [Julia workshops](http://www.carstenbauer.eu/#workshops) for you.
+install one of my [Julia workshops](http://www.carstenbauer.eu/#workshops) for you.
 
 Specifically, the wizard does the following:
 
