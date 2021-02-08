@@ -1,8 +1,7 @@
 # Package
 
 The **Workshop Wizard** is a magical little helper who will download and
-install one of [my](https://github.com/crstnbr) Julia workshops
-(like [this one](https://github.com/crstnbr/JuliaWorkshop19)) for you.
+install one of [my](https://github.com/crstnbr) [Julia workshops](http://www.carstenbauer.eu/#workshops) for you.
 
 Specifically, the wizard does the following:
 
