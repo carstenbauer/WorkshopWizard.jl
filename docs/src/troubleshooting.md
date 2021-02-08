@@ -49,22 +49,22 @@ For more information check out the [Jupyter documentation](https://jupyter.readt
 ## Manual installation of a workshop
 
 If, for some reason, the WorkshopWizard doesn't work for you, you can use these manual instructions
-to install a workshop manually. We will demonstrate the necessary stepts for the `JuliaOulu20` workshop.
+to install a workshop manually. We will demonstrate the necessary stepts for the `JuliaNRW21` workshop.
 
 ### Downloading the workshop
 
-If you have `git` installed, just `git clone https://github.com/crstnbr/JuliaOulu20`. If you don't have `git` installed, or can't access it from the commmand line, start a fresh Julia instance and run
+If you have `git` installed, just `git clone https://github.com/crstnbr/JuliaNRW21`. If you don't have `git` installed, or can't access it from the commmand line, start a fresh Julia instance and run
 ```
 using LibGit2
-LibGit2.clone("https://github.com/crstnbr/JuliaOulu20", "some/where/on/my/computer/JuliaOulu20")
+LibGit2.clone("https://github.com/crstnbr/JuliaNRW21", "some/where/on/my/computer/JuliaNRW21")
 ```
 where you replace `some/where/on/my/computer/` with a download path to your liking.
 
 ### [Installing and precompiling the dependencies](@id instantiate_env)
 
-Open up a Julia REPL and navigate to the `JuliaOulu20` directory
+Open up a Julia REPL and navigate to the `JuliaNRW21` directory
 ```
-cd("some/where/on/my/computer/JuliaOulu20")
+cd("some/where/on/my/computer/JuliaNRW21")
 ```
 We now install all Julia package dependencies (*instantiate* the workshop's Julia environment)
 and precompile them by running the following snippet
