@@ -26,6 +26,8 @@ notebook()
 
 The default download path is the desktop, on windows, or the home directory, on linux/macOS.
 
+**Note:** When running `notebook()` for the first time, IJulia might ask you whether it should install jupyter for you (because it couldn't find an existing installation). Just say yes.
+
 ## Demonstration
 
 ![wizard demo](https://raw.githubusercontent.com/crstnbr/WorkshopWizard.jl/master/demo/wizard.gif)
