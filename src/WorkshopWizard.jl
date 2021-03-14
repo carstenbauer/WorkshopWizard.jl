@@ -4,6 +4,7 @@ using Pkg
 
 const GITHUB_BASEURL = "https://github.com/crstnbr/"
 const WORKSHOPS = [
+    "JuliaCologne21",
     "JuliaNRW21",
     "JuliaOulu20",
     "JuliaWorkshop19",
@@ -11,6 +12,7 @@ const WORKSHOPS = [
     ]
 
 const WORKSHOP_JULIA_VERSION = Dict(
+    "JuliaCologne21" => v"1.5",
     "JuliaNRW21" => v"1.5",
     "JuliaOulu20" => v"1.3",
     "JuliaWorkshop19" => v"1.2",
