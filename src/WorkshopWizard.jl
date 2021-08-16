@@ -2,7 +2,7 @@ module WorkshopWizard
 
 using Pkg
 
-const GITHUB_BASEURL = "https://github.com/crstnbr/"
+const GITHUB_BASEURL = "https://github.com/carstenbauer/"
 const WORKSHOPS = [
     "JuliaNRWSS21",
     "JuliaCologne21",
