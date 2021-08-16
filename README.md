@@ -9,22 +9,22 @@
 | [![][docs-dev-img]][docs-dev-url] | [![][github-ci-img]][github-ci-url] [![][codecov-img]][codecov-url] |
 
 [docs-dev-img]: https://img.shields.io/badge/docs-dev-blue.svg
-[docs-dev-url]: https://crstnbr.github.io/WorkshopWizard.jl/dev
-[github-ci-img]: https://github.com/crstnbr/WorkshopWizard.jl/workflows/Run%20tests/badge.svg
-[github-ci-url]: https://github.com/crstnbr/WorkshopWizard.jl/actions?query=workflow%3A%22Run+tests%22
-[codecov-img]: https://img.shields.io/codecov/c/github/crstnbr/WorkshopWizard.jl/master.svg?label=codecov
-[codecov-url]: http://codecov.io/github/crstnbr/WorkshopWizard.jl?branch=master
+[docs-dev-url]: https://carstenbauer.github.io/WorkshopWizard.jl/dev
+[github-ci-img]: https://github.com/carstenbauer/WorkshopWizard.jl/workflows/Run%20tests/badge.svg
+[github-ci-url]: https://github.com/carstenbauer/WorkshopWizard.jl/actions?query=workflow%3A%22Run+tests%22
+[codecov-img]: https://img.shields.io/codecov/c/github/carstenbauer/WorkshopWizard.jl/master.svg?label=codecov
+[codecov-url]: http://codecov.io/github/carstenbauer/WorkshopWizard.jl?branch=master
 
 A magical little helper who will download and install [one of my Julia workshops](http://www.carstenbauer.eu/#workshops) for you.
 
-For disbelievers (and troubleshooting) there is a [documentation](https://crstnbr.github.io/WorkshopWizard.jl/dev).
+For disbelievers (and troubleshooting) there is a [documentation](https://carstenbauer.github.io/WorkshopWizard.jl/dev).
 
 ## Usage
 
 To quickly get the latest workshop, install the wizard (copy-paste the following into the Julia REPL)
 
 ```julia
-] add https://github.com/crstnbr/WorkshopWizard.jl
+] add https://github.com/carstenbauer/WorkshopWizard.jl
 ```
 
 and start the magic
@@ -45,4 +45,4 @@ The default download path is the desktop, on windows, or the home directory, on 
 
 ## Demonstration
 
-![wizard demo](https://raw.githubusercontent.com/crstnbr/WorkshopWizard.jl/master/demo/wizard.gif)
+![wizard demo](https://raw.githubusercontent.com/carstenbauer/WorkshopWizard.jl/master/demo/wizard.gif)
